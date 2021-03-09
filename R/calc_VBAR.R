@@ -15,7 +15,7 @@ calc_VBAR <- function(SI, age,  SppId) {
   #get species code based on species_model_selection table
   SppId <- toupper(SppId)
   current_coefs <- MISTR_coef$species_model_selection[MISTR_coef$species_model_selection$SppId == SppId,]
-  SppID_VBAR <- current_coefs$VBarSelId
+  SppID_VBAR <- current_coefs$VBarId
 
 
   coeffs = MISTR_coef$vbar_coef
