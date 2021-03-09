@@ -28,7 +28,7 @@ calc_SI <- function(H, age, SppId) {
 
     eval(parse(text=current_coefs$Expression))
   } else {
-    message(paste0("No SI equation for ",SppId,". Using search algorithm to determine SI"))
+    #message(paste0("No SI equation for ",SppId,". Using search algorithm to determine SI"))
     MISTR:::SI_exhaustive(H = H, age = age, SppId = SppId)
   }
 
