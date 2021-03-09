@@ -20,7 +20,7 @@ calc_BA <- function(SI, BHage, SppId,  stocking=1, Origin = "N", PlantedSpp = NA
   #get species code based on species_model_selection table
   SppId <- toupper(SppId)
   current_coefs <- MISTR_coef$species_model_selection[MISTR_coef$species_model_selection$SppId == SppId,]
-  SppID_BA <- current_coefs$BaId
+  SppID_BA <- current_coefs$YcBaId
 
   coeffs = MISTR_coef$BA_coef
 
