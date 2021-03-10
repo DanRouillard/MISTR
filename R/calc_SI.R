@@ -19,7 +19,7 @@ calc_SI <- function(H, age, SppId) {
   current_coefs <- MISTR_coef$species_model_selection[MISTR_coef$species_model_selection$SppId == SppId,]
   SppId_SI <- current_coefs$SiId
 
-  if (!(SppId %in% MISTR_coef$SI_equations$SppId_SI)) {stop(paste0("No SI model for ",SppId_SI)}
+  if (!(SppId %in% MISTR_coef$SI_equations$SppId_SI)) {stop(paste0("No SI model for ",SppId_SI))}
   # SppId <- toupper(SppId)
   current_coefs <- MISTR_coef$SI_equations[MISTR_coef$SI_equations$SppId == SppId_SI,]
   ht <- H
