@@ -13,12 +13,15 @@
 #' @export
 
 calc_SI <- function(H, age, SppId) {
-  if (!(SppId %in% MISTR_coef$SI_equations$SppId)) {stop(paste0("No SI model for ",SppId))}
 
+   #get species code based on species_model_selection table
   SppId <- toupper(SppId)
+  current_coefs <- MISTR_coef$species_model_selection[MISTR_coef$species_model_selection$SppId == SppId,]
+  SppId_SI <- current_coefs$SiId
 
-  current_coefs <- MISTR_coef$SI_equations[MISTR_coef$SI_equations$SppId == SppId,]
-
+  if (!(SppId %in% MISTR_coef$SI_equations$SppId_SI)) {stop(paste0("No SI model for ",SppId_SI)}
+  # SppId <- toupper(SppId)
+  current_coefs <- MISTR_coef$SI_equations[MISTR_coef$SI_equations$SppId == SppId_SI,]
   ht <- H
 
   if(current_coefs$Expression != "iteration") {
@@ -29,7 +32,7 @@ calc_SI <- function(H, age, SppId) {
     eval(parse(text=current_coefs$Expression))
   } else {
     #message(paste0("No SI equation for ",SppId,". Using search algorithm to determine SI"))
-    MISTR:::SI_exhaustive(H = H, age = age, SppId = SppId)
+    MISTR:::SI_exhaustive(H = H, age = age, SppId = SppId_SI)
   }
 
 }
