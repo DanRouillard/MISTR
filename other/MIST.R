@@ -42,7 +42,7 @@ calc_BA <- function(SI, BHage, SppId,  stocking=1, Origin = "N", PlantedSpp = NA
 calc_H <- function(SI, age, SppId) {
   if (!(SppId %in% H_equations$SppId)) {stop(paste0("No H model for ",SppId))}
   
-  SppId <- toupper(SppId)
+  #SppId <- toupper(SppId)
   
   current_coefs <- H_equations[H_equations$SppId == SppId,]
   
@@ -57,7 +57,7 @@ calc_H <- function(SI, age, SppId) {
 yc_SI <- function(ht, age, SppId) {
   if (!(SppId %in% coeffs$SppId)) {stop(paste0("No SI model for ",SppId))}
   
-  SppId <- toupper(SppId)
+  #SppId <- toupper(SppId)
   
   current_coefs <- SI_equations[SI_equations$SppId == SppId,]
   
